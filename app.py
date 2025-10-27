@@ -3,6 +3,7 @@ from streamlit_google_auth import Authenticate
 import firebase_admin
 from firebase_admin import credentials, auth
 import requests
+import json
 
 # Initialize Firebase
 if not firebase_admin._apps:
@@ -12,7 +13,7 @@ if not firebase_admin._apps:
 
 # Initialize Google Authenticator
 authenticator = Authenticate(
-    secret_credentials_path=dict(st.secrets["google_credentials"]),
+    secret_credentials_path=json.loads(st.secrets["google_credentials"]),
     cookie_name="streamlit_auth_cookie",
     cookie_key=st.secrets["COOKIE_KEY"],
     redirect_uri=st.secrets["REDIRECT_URI_GOOGLE"],
