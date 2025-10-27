@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.pip-cache/
+.git/
+.gitignore
+.vscode/
+.idea/
+*.md
+.env
+*.log
+
