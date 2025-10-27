@@ -4,6 +4,7 @@ import firebase_admin
 from firebase_admin import credentials, auth
 import requests
 import json
+import tempfile
 
 # Initialize Firebase
 if not firebase_admin._apps:
@@ -11,9 +12,16 @@ if not firebase_admin._apps:
     firebase_admin.initialize_app(cred)
 
 
+# Write Google credentials to a temporary file
+google_creds_dict = json.loads(st.secrets["google_credentials"])
+temp_file = tempfile.NamedTemporaryFile(mode="w", delete=False, suffix=".json")
+json.dump(google_creds_dict, temp_file)
+temp_file.close()
+google_creds_path = temp_file.name
+
 # Initialize Google Authenticator
 authenticator = Authenticate(
-    secret_credentials_path=json.loads(st.secrets["google_credentials"]),
+    secret_credentials_path=google_creds_path,
     cookie_name="streamlit_auth_cookie",
     cookie_key=st.secrets["COOKIE_KEY"],
     redirect_uri=st.secrets["REDIRECT_URI_GOOGLE"],
