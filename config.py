@@ -32,7 +32,7 @@ def get_google_authenticator():
         secret_credentials_path=google_creds_path,
         cookie_name="streamlit_auth_cookie",
         cookie_key=st.secrets["COOKIE_KEY"],
-        redirect_uri=st.secrets["REDIRECT_URI_GOOGLE"],
+        redirect_uri="http://localhost:8501",
         cookie_expiry_days=30,
     )
 

@@ -4,3 +4,5 @@ requests>=2.31.0
 PyJWT>=2.8.0
 extra-streamlit-components>=0.1.70
 streamlit-google-auth>=0.4.1
+pandas>=2.0.0
+rapidfuzz>=3.0.0
