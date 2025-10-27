@@ -9,9 +9,10 @@ if not firebase_admin._apps:
     cred = credentials.Certificate(dict(st.secrets["firebase_auth_token"]))
     firebase_admin.initialize_app(cred)
 
+
 # Initialize Google Authenticator
 authenticator = Authenticate(
-    secret_credentials_path="google_credentials.json",
+    secret_credentials_path=dict(st.secrets["google_credentials"]),
     cookie_name="streamlit_auth_cookie",
     cookie_key=st.secrets["COOKIE_KEY"],
     redirect_uri=st.secrets["REDIRECT_URI_GOOGLE"],
