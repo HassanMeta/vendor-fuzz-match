@@ -14,7 +14,7 @@ authenticator = Authenticate(
     secret_credentials_path="google_credentials.json",
     cookie_name="streamlit_auth_cookie",
     cookie_key=st.secrets["COOKIE_KEY"],
-    redirect_uri="http://localhost:8501",
+    redirect_uri=st.secrets["REDIRECT_URI_GOOGLE"],
     cookie_expiry_days=30,
 )
 
