@@ -37,13 +37,3 @@ def get_google_authenticator():
     )
 
     return authenticator
-
-
-def get_firebase_api_key():
-    """Get Firebase API Key from secrets"""
-    return st.secrets["FIREBASE_API_KEY"]
-
-
-def get_rest_api_url():
-    """Get Firebase REST API base URL"""
-    return "https://identitytoolkit.googleapis.com/v1/accounts"
