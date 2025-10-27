@@ -104,10 +104,21 @@ def render_authentication_forms(authenticator):
 
     # Google Login Button
     st.markdown("### 🔵 Login with Google")
+
+    # Show warning if there's a Google auth error
+    if st.session_state.get("google_auth_error"):
+        st.warning(
+            "⚠️ Google authentication is currently unavailable. "
+            "Please use email/password login or contact support if this persists."
+        )
+
     try:
         authenticator.login()
     except Exception as e:
-        st.error(f"Google login error: {str(e)}")
+        error_str = str(e)
+        # Only show non-JWT errors
+        if "invalid_grant" not in error_str and "Invalid JWT" not in error_str:
+            st.error(f"Google login error: {str(e)}")
 
     st.markdown("---")
 
